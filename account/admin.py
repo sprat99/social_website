@@ -9,7 +9,7 @@ class UserAdmin(admin.ModelAdmin):
         model = User
 
 class InfoAdmin(admin.ModelAdmin):
-    list_display = ['email', 'gender', 'profile']
+    list_display = ['email', 'gender', 'profile', 'phone']
     class Meta:
         model = Info
 

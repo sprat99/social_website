@@ -84,10 +84,18 @@ def info(request):
             pic = info.cleaned_data['pic']
             profile = info.cleaned_data['profile']
             email = info.cleaned_data['email']
+            phone = info.cleaned_data['phone']
+            address = info.cleaned_data['address']
+            age = info.cleaned_data['age']
+            major = info.cleaned_data['major']
             new_info, created = Info.objects.get_or_create(gender=gender, \
                                                            pic=pic, \
                                                            profile=profile, \
-                                                           email=email)
+                                                           email=email, \
+                                                           phone=phone, \
+                                                           age=age, \
+                                                           major=major, \
+                                                           address=address)
             if created:
                 new_info.save()
                 return HttpResponse("You have updated info for %s" %email)

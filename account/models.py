@@ -12,6 +12,8 @@ class User(models.Model):
     def __unicode__(self):
         return self.email
 
+
+
 class Info(models.Model):
     email = models.OneToOneField(User)
     MALE = 'male'
@@ -23,7 +25,13 @@ class Info(models.Model):
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES, default=MALE)
     
     pic = models.ImageField(upload_to='img/account_pic/')
-    profile = models.TextField()
+    phone = models.CharField(max_length=20, blank=True)
+    address = models.TextField(blank=True)
+    age = models.IntegerField(default=0)
+    major = models.CharField(max_length=100, blank=True)
+    profile = models.TextField(blank=True)
+    def __unicode__(self):
+        return self.email
 
 class UserForm(ModelForm):
     class Meta:
@@ -33,4 +41,4 @@ class UserForm(ModelForm):
 class InfoForm(ModelForm):
     class Meta:
         model = Info
-        fields = ['email', 'gender', 'pic', 'profile']
+        fields = ['email', 'gender', 'age', 'phone', 'major', 'address', 'pic', 'profile']
