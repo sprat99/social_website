@@ -1,6 +1,7 @@
 <form method="POST" action="" enctype="multipart/form-data">
 	{% csrf_token %}
-	<div class="col-xs-8 col-sm-10 col-md-11 col-lg-11">
+	<div class="col-xs-12 col-sm-11 col-sm-offset-1 col-md-11 col-md-offset-1">
+	
 		<select id="id_user" name="user" style="visibility: hidden">
 			{% for user in user_list %}
 				{% if user.email == email %}
@@ -10,18 +11,20 @@
 				{% endif %}
 			{% endfor %}
 		</select>
+		
 		<textarea id="id_message" name="message" class="form-control" rows="5"></textarea>
+		
 		<div class="post">
-			<!-- <a style="color: #ccc; font-size: 30px; padding-left: 3%;">
-			<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-			</a> -->
-			
 			<div id="upload-file-container">
 				<input id="id_picture" name="picture" type="file"></input>
 			</div>
-			<button type="submit" class="btn btn-danger btn-lg" style="float: right;">
-			Post your status
+			<button id="post_status_btn_lg" type="submit" class="btn btn-danger btn-lg" style="float: right;">
+			Post
 			</button>
 		</div>
+		
+		<button id="post_status_btn_xs" type="submit" class="btn btn-danger btn-block">
+		Post
+		</button>
 	</div>
 </form>

@@ -8,11 +8,16 @@ class User(models.Model):
     last_name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=18)
-
+    friends = models.ManyToManyField('self', null=True, blank=True)
+#     friends = models.ManyToManyField('self', through='Friendship', null=True, blank=True)
     def __unicode__(self):
         return self.email
 
-
+# class Friendship(models.Model):
+#     from_user = models.ForeignKey(User, related_name="from_user")
+#     to_user = models.ForeignKey(User, related_name="to_user")
+#     friend_type = models.CharField(max_length=255)
+#     friend_rated = models.FloatField()
 
 class Info(models.Model):
     email = models.OneToOneField(User)

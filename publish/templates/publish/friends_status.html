@@ -1,0 +1,19 @@
+{% for fs in friend_status %}
+<div class="well">
+	{% if fs.picture%}
+	<img class="img-responsive" src="{{ fs.picture.url }}" style="margin-left:auto; margin-right:auto;"></img>
+	{% endif %}
+	<div class="messages">
+		<div class="row">
+			<div class="col-xs-3 col-sm-4" style="text-align: right">
+				<h4>{{ fs.user }}</h4>
+			</div>
+			<div class="col-xs-9 col-sm-8">
+				<h4>{{ fs.message }}</h4>
+			</div>
+		</div>
+		<hr>
+		<p class="text-muted">{{fs.timestamp}}</p>
+	</div>
+</div>
+{% endfor %}		
