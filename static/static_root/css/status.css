@@ -1,0 +1,6 @@
+@CHARSET "UTF-8";
+#status_well>.well {
+	padding: 0;
+	border-radius: 10px;
+	background-color: white;
+}
