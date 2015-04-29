@@ -1,6 +1,5 @@
 {% extends 'publish/base_homepage.html' %}
 {% block status %}
-
 	{% for s in status %}
 	<div class="well">
 		{% if s.picture%}
@@ -8,18 +7,16 @@
 		{% endif %}
 		<div class="messages">
 			<div class="row">
-				<div class="col-xs-3 col-sm-4 col-md-3" style="padding-left: 0;">
-					<h4 style="padding-left: 20px;">{{ user_obj.last_name }}{{ user_obj.first_name }}:</h4>
+				<div class="col-xs-1" style="margin-right: 30px;">
+					<img class="" style="width: 40px; height: auto;" src="{{ info_obj.pic.url }}"></img>
 				</div>
-				<div class="col-xs-9 col-sm-8 col-md-9" style="text-align: left; padding-left: 0">
-					<h4 style="padding-left: 0;">{{s.message}}</h4>
+				<div class="col-xs-9" style="padding:0">
+					<h4 style="">{{s.message}}</h4>
 				</div>
 			</div>
 			<hr>
-			<p class="text-muted">{{s.timestamp}}</p>
+			<p class="text-muted">{{ user_obj.last_name }}{{ user_obj.first_name }}:&nbsp;{{s.timestamp}}</p>
 		</div>
 	</div>
 	{% endfor %}
-	
-
 {% endblock %}

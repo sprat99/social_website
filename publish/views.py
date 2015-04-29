@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http.response import HttpResponse, HttpResponseRedirect
-from django.conf import settings
-from account.models import User, UserForm, Info, InfoForm
+from account.models import User, Info
 from models import Status, StatusForm
 
 # Create your views here.
@@ -10,11 +9,8 @@ def status(request):
     user_obj = User.objects.get(id=user_id)
     email = user_obj.email
     friends_list = user_obj.friends.all()
-
-    friend_status = []
-    for friend in friends_list:
-        friend_status_obj = Status.objects.filter(user=friend)
-        friend_status += friend_status_obj.all().order_by('-timestamp')
+    user_list = User.objects.all()
+    status_list = Status.objects.all().order_by('-timestamp')    
 
     if request.method == 'POST':
         status_form = StatusForm(request.POST, request.FILES)
@@ -36,8 +32,9 @@ def status(request):
     info_obj = Info.objects.get(email=user_obj)
     status_obj = Status.objects.filter(user=user_obj)
     status = status_obj.all().order_by('-timestamp')
-    user_list = User.objects.all()
+    info_list = Info.objects.all()
+
     context = {'user_obj': user_obj, 'status': status, 'info_obj': info_obj, 'status_form': status_form, \
-               'email': email, 'user_list': user_list, 'friends_list': friends_list, 'friend_status': friend_status}
+               'user_list': user_list, 'friends_list': friends_list, 'status_list':status_list, 'info_list':info_list}
     template = 'publish/status.html'
     return render(request, template, context)

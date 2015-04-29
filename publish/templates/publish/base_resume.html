@@ -35,43 +35,11 @@ body {
 		<div class="well">
 			{% include "publish/navbar.html" %}
 			<div class="mycontainer">
-				<div class="row">
-					<div class="col-md-2">
-					</div>
-					<!-- user's post -->
-					<div class="col-xs-12 col-sm-6 col-md-5">
-						
-						<div class="row" style="margin-bottom: 30px;">
-							<!-- <div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
-								<img style="width: 50px; height: auto; margin-top: 10px;"
-									src="{{ info_obj.pic.url }}"></img>
-							</div> -->
-							
-							<!-- <div style="margin-left: 80px;">
-								<h3>Hello, {{ user_obj.last_name }}{{ user_obj.first_name }}</h3>
-							</div> -->
-								
-							
-							{% include "publish/status_post.html" %}
-						</div>
-						
-						
-						
-						<div class="row">
-							<div class="col-xs-12 col-sm-11 col-sm-offset-1" id="status_well">
-							{% block status %}
-							{% endblock %}
-							</div>
-						</div>	
-					</div>
-					
-					<!-- friends status -->
-					<div class="col-xs-12 col-sm-6 col-md-5" id="status_well">
-					{% include 'publish/friends_status.html' %}
-					</div>
-					<!-- end of friends status -->
-					
-				</div><!-- end of row -->
+			
+			{% block resume_post %}
+			{% endblock %}
+				
+
 			</div><!-- end of mycontainer -->
 		</div><!-- end of well -->
 	</div><!-- end of container -->

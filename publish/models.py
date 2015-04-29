@@ -13,21 +13,7 @@ class Status(models.Model):
     def __unicode__(self):
         return self.user.email
 
-class Resume(models.Model):
-    user = models.OneToOneField(User)
-    info = models.OneToOneField(Info)
-    education = models.CharField(max_length=30)
-    ability = models.TextField()
-    experience = models.TextField()
-    awards = models.TextField()
-    
-    def __unicode__(self):
-        return self.user.email
 
 class StatusForm(ModelForm):
     class Meta:
         model = Status
-
-class ResumeForm(ModelForm):
-    class Meta:
-        model = Resume
