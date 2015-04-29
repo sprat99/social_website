@@ -13,11 +13,5 @@ class ExperienceAdmin(admin.ModelAdmin):
     class Meta:
         model = Experience
 
-# class ResumeAdmin(admin.ModelAdmin):
-#     list_display = ['user', 'info', 'education', 'experience']
-#     class Meta:
-#         model = Resume
-
 admin.site.register(Education, EducationAdmin)
 admin.site.register(Experience, ExperienceAdmin)
-# admin.site.register(Resume, ResumeAdmin)

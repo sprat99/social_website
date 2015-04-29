@@ -1,6 +1,6 @@
 from django.db import models
 from django.forms import ModelForm
-from account.models import User, Info
+from account.models import User
 # Create your models here.
     
 class Education(models.Model):
@@ -34,15 +34,6 @@ class Experience(models.Model):
     def __unicode__(self):
         return self.user.email
 
-# class Resume(models.Model):
-#     user = models.OneToOneField(User)
-#     info = models.OneToOneField(Info)
-#     education = models.OneToOneField(Education)
-#     experience = models.OneToOneField(Experience)
-#     
-#     def __unicode__(self):
-#         return self.user.email
-
 class EducationForm(ModelForm):
     class Meta:
         model = Education
@@ -53,7 +44,3 @@ class ExperienceForm(ModelForm):
         model = Experience
         fields = ['user', 'activity', 'internship', 'awards', 'association', 'other']
 
-# class ResumeForm(ModelForm):
-#     class Meta:
-#         model = Resume
-#         fields = ['user', 'info', 'education', 'experience']
