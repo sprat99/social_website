@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'south',
     'account',
     'publish',
+    'resume',
 )
 
 MIDDLEWARE_CLASSES = (
