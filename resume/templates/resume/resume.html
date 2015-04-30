@@ -1,8 +1,27 @@
 {% extends 'resume/base_resume.html' %}
 {% block resume %}
 
+{% if experience_obj == None and education_obj == None %}
 <h2>Don't have any resume yet.</h2>
 <a class="btn btn-success btn-block" href="/resume/resume_edu/">
 			Post your resume
 </a>
+{% else %}
+
+
+		{{ education_obj.user }}<br>
+		{{ education_obj.degree }}<br>
+		{{ education_obj.school }}<br>
+		{{ education_obj.department }}<br>
+		
+		{{ experience_obj.activity }}<br>
+		{{ experience_obj.internship }}<br>
+		{{ experience_obj.awards }}<br>
+		{{ experience_obj.association }}<br>
+		{{ experience_obj.other }}<br>
+
+
+{% endif %}
+
+
 {% endblock %}

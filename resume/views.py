@@ -9,8 +9,15 @@ def resume(request):
     user_id = request.session["user_id"]
     user_obj = User.objects.get(id=user_id)
     info_obj = Info.objects.get(email=user_obj)
+    
+    try:
+        education_obj = Education.objects.get(user=user_obj)
+        experience_obj = Experience.objects.get(user=user_obj)
+    except:
+        education_obj = None
+        experience_obj = None
 
-    context = {'user_obj': user_obj, 'info_obj':info_obj}
+    context = { 'user_obj': user_obj, 'info_obj':info_obj, 'education_obj':education_obj, 'experience_obj':experience_obj }
     template = 'resume/resume.html'
     return render(request, template, context)
 
@@ -59,7 +66,7 @@ def resume_exp(request):
             association = exp_form.cleaned_data['association']
             other = exp_form.cleaned_data['other']
              
-            new_exp, created = Education.objects.get_or_create(user=user, \
+            new_exp, created = Experience.objects.get_or_create(user=user, \
                                                                activity=activity, \
                                                                internship=internship, \
                                                                awards=awards, \
@@ -69,7 +76,7 @@ def resume_exp(request):
              
             if created:
                 new_exp.save()
-                return HttpResponseRedirect('/status/')
+                return HttpResponseRedirect('/resume/')
     else:
         exp_form = ExperienceForm()
 
