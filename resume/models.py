@@ -6,13 +6,13 @@ from account.models import User
 class Education(models.Model):
     user = models.OneToOneField(User)
     BACHELOR = 'Bachelor'
-    MASTER = 'master'
-    DOCTOR = 'doctor'
+    MASTER = 'Master'
+    DOCTOR = 'Doctor'
     
     DEGREE_CHOICES = (
                       (BACHELOR, 'Bachelor'),
-                      (MASTER, 'master'),
-                      (DOCTOR, 'doctor'),
+                      (MASTER, 'Master'),
+                      (DOCTOR, 'Doctor'),
                       )
     
     degree = models.CharField(max_length=8, choices=DEGREE_CHOICES, default=BACHELOR, blank=True)

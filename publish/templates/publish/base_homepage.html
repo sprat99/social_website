@@ -28,6 +28,14 @@ body {
 	height: 41px;
 }
 
+textarea.form-control {
+ 	border-top-left-radius: 10px;
+ 	border-top-right-radius: 10px;
+	border-bottom-right-radius: 0px;
+ 	border-bottom-left-radius: 0px;
+	border-bottom: 0px;
+}
+
 </style>
 </head>
 <body>
@@ -36,8 +44,12 @@ body {
 			{% include "publish/navbar.html" %}
 			<div class="mycontainer">
 				<div class="row">
+				
+					<!-- friend list -->
 					<div class="col-md-2">
+						{% include "publish/friend_list.html" %}
 					</div>
+					
 					<!-- user's post -->
 					<div class="col-xs-12 col-sm-6 col-md-5">
 						
