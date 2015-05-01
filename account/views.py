@@ -59,6 +59,7 @@ def register(request):
                                                            email=email)
         if created:
             new_register.save()
+            new_register.friends.add(new_register)
             request.session['session_user_id'] = new_register.id
             return HttpResponseRedirect('info')
     else:
@@ -105,7 +106,6 @@ def info(request):
     user_list = User.objects.all()
     user_obj = User.objects.get(id=request.session['session_user_id'])
     email = user_obj.email
-    print user_list
     
     context = {'info': info, 'email': email, 'user_list': user_list}
     template = 'account/user_info.html'

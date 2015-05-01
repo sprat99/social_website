@@ -33,20 +33,42 @@ def friend_add(request):
     user_obj = User.objects.get(id=user_id)
     info_obj = Info.objects.get(email=user_obj)
 
+    # search friends
     search = request.GET.get('friend')
-    
     try:
-        friend = User.objects.get(first_name__contains=search)
+        friends = User.objects.filter(full_name__contains=search)
     except:
-        friend = None
+        friends = None
         try:
-            friend = User.objects.get( Q(first_name__iexact=search)\
+            friends = User.objects.filter( Q(first_name__contains=search)\
                                         | Q(last_name__iexact=search)\
-                                        | Q(email__contains=search) )
+                                        | Q(email__contains=search)
+                                        )
         except:
-            friend = None
+            friends = None
+    
+    # get friends info and status
+    friends_info_list = []
+    friends_status_list = []
+    for friend in friends:
+        friends_info_list += Info.objects.filter(email=friend)
+        friends_status_list += Status.objects.filter(user=friend)
 
+    # add friends
+    if request.method == 'POST':
+        try:
+            friend_id = request.POST.get('friend_id')
+            friend_add = User.objects.get(id=friend_id)
+            user_obj.friends.add(friend_add)
+            print "ok"
+            return HttpResponseRedirect('/status/')
+        except:
+            print "failed"
 
-    context = { 'user_obj': user_obj, 'info_obj':info_obj, 'friend':friend}
+    context = { 'user_obj': user_obj, \
+               'info_obj':info_obj, \
+               'friends':friends, \
+               'friends_info_list':friends_info_list, \
+               'friends_status_list':friends_status_list }
     template = 'friend/friend_add.html'
     return render(request, template, context)

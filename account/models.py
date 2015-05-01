@@ -35,7 +35,7 @@ class Info(models.Model):
     major = models.CharField(max_length=100, blank=True)
     profile = models.TextField(blank=True)
     def __unicode__(self):
-        return self.email
+        return unicode(self.email)
 
 class UserForm(ModelForm):
     class Meta:
