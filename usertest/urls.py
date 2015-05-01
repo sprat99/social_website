@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^account/', include('account.urls')),
     url(r'^status/', include('publish.urls')),
     url(r'^resume/', include('resume.urls')),
+    url(r'^friend', include('friend.urls')),
 )
 
 urlpatterns += staticfiles_urlpatterns()

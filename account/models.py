@@ -9,8 +9,14 @@ class User(models.Model):
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=18)
     friends = models.ManyToManyField('self', null=True, blank=True)
+    
     def __unicode__(self):
         return self.email
+    
+    def _get_full_name(self):
+        return '%s%s' % (self.last_name, self.first_name)
+    
+    full_name = property(_get_full_name)
 
 class Info(models.Model):
     email = models.OneToOneField(User)

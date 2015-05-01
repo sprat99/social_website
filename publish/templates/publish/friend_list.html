@@ -1,3 +1,19 @@
+<div class="list-group">
+<a class="list-group-item active" style="text-align: center; font-size: 18px;">My friends</a>
 {% for friend in friends_list %}
-	{{ friend }}
+	{% for info in info_list %}
+		{% if friend == info.email and friend != user_obj %}
+		<a class="list-group-item" href="/friend_{{ friend.id }}">
+		<div class="row">
+			<div class="col-xs-3">
+				<img class="" style="width: 40px; height: auto;" src="{{ info.pic.url }}"></img>
+			</div>
+			<div class="col-xs-8">
+				<h4>{{ friend.last_name }}{{ friend.first_name }}</h4>
+			</div>
+		</div>
+		</a>
+		{% endif %}
+	{% endfor %}
 {% endfor %}
+</div>

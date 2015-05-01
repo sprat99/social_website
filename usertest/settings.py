@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'account',
     'publish',
     'resume',
+    'friend',
 )
 
 MIDDLEWARE_CLASSES = (
